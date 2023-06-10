@@ -1,11 +1,11 @@
 //containing all the functionality 
 require('dotenv').config()
 const User = require('../models/user')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt') // to hash the password
 const jwt = require('jsonwebtoken')
 
 
-exports.auth = async (req, res, next) => {
+exports.auth = async (req, res, next) => { //verifies the user auth by making sure they have the right credentials corrosponds to the DB
   try {
     const token = req.header('Authorization').replace('Bearer ', '')
     const data = jwt.verify(token, process.env.SECRET)
